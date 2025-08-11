@@ -10,48 +10,59 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: windows-latest
-            platform: win32
-            arch: x64
-            npm_config_arch: x64
-            binary_name: claude-code-router.exe
-          - os: ubuntu-latest
+          - os: ubuntu-22.04
             platform: linux
             arch: x64
-            npm_config_arch: x64
-            binary_name: claude-code-router
+            ubuntu_version: "22.04"
+          - os: ubuntu-24.04
+            platform: linux
+            arch: x64
+            ubuntu_version: "24.04"
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-      - name: Install dependencies
-        run: npm install
-      - name: Install pkg for binary building
-        run: npm install -g pkg
-      - name: Build binary from source (Windows)
-        if: matrix.os == 'windows-latest'
+
+      - name: Install system dependencies
         run: |
-          New-Item -ItemType Directory -Force -Path dist
-          pkg . --targets node20-${{ matrix.platform }}-${{ matrix.arch }} --output dist/${{ matrix.binary_name }}
-        shell: powershell
-      - name: Build binary from source (Linux)
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          mkdir -p dist
-          pkg . --targets node20-${{ matrix.platform }}-${{ matrix.arch }} --output dist/${{ matrix.binary_name }}
+          sudo apt-get update
+          sudo apt-get install -y wget xz-utils lsb-release
         shell: bash
-      - name: Upload binary artifact
+
+      - name: Build standalone installer
+        run: |
+          chmod +x build-installer.sh
+          ./build-installer.sh
+        shell: bash
+
+      - name: Verify installer
+        run: |
+          if [ -f claude-router-installer-linux-x64-ubuntu${{ matrix.ubuntu_version }}.tar.gz ]; then
+            echo "Installer created successfully"
+            ls -lh claude-router-installer-linux-x64-ubuntu${{ matrix.ubuntu_version }}.tar.gz
+            echo "Archive contents (first 20 files):"
+            tar -tzf claude-router-installer-linux-x64-ubuntu${{ matrix.ubuntu_version }}.tar.gz | head -20
+          else
+            echo "Installer not found"
+            ls -la claude-router-installer*.tar.gz || true
+            exit 1
+          fi
+        shell: bash
+
+      - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: claude-code-router-${{ matrix.platform }}-${{ matrix.arch }}
-          path: dist/${{ matrix.binary_name }}
+          name: claude-router-installer-${{ matrix.platform }}-${{ matrix.arch }}-ubuntu${{ matrix.ubuntu_version }}
+          path: |
+            claude-router-installer-${{ matrix.platform }}-${{ matrix.arch }}-ubuntu${{ matrix.ubuntu_version }}.tar.gz
 
   release:
     permissions:
@@ -66,19 +77,15 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-      - name: Download all artifacts
+      - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
           path: artifacts/
-      - name: Prepare release assets
-        run: |
-          mkdir -p release-assets
-          find artifacts/ -name "claude-code-router*" -type f -exec cp {} release-assets/ \;
-          ls -la release-assets/
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
           token: ${{ secrets.AI_CODESPARK_TOKEN }}
-          repository: ai-codespark/claude-code-router
-          files: release-assets/*
+          files: |
+            artifacts/claude-router-installer-linux-x64-ubuntu22.04/claude-router-installer-linux-x64-ubuntu22.04.tar.gz
+            artifacts/claude-router-installer-linux-x64-ubuntu24.04/claude-router-installer-linux-x64-ubuntu24.04.tar.gz
