@@ -1,5 +1,8 @@
 # Claude Code Router
 
+I am seeking funding support for this project to better sustain its development. If you have any ideas, feel free to reach out to me: [m@musiiot.top](mailto:m@musiiot.top)
+
+
 [中文版](README_zh.md)
 
 > A powerful tool to route Claude Code requests to different models and customize any request.
@@ -312,6 +315,7 @@ Transformers allow you to modify the request and response payloads to ensure com
 - `cleancache`: Clears the `cache_control` field from requests.
 - `vertex-gemini`: Handles the Gemini API using Vertex authentication.
 - `qwen-cli` (experimental): Unofficial support for qwen3-coder-plus model via Qwen CLI [qwen-cli.js](https://gist.github.com/musistudio/f5a67841ced39912fd99e42200d5ca8b).
+- `rovo-cli` (experimental): Unofficial support for gpt-5 via Atlassian Rovo Dev CLI [rovo-cli.js](https://gist.github.com/SaseQ/c2a20a38b11276537ec5332d1f7a5e53).
 
 **Custom Transformers:**
 

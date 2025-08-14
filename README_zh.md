@@ -1,5 +1,7 @@
 # Claude Code Router
 
+我正在为该项目寻求资金支持，以更好地维持其发展。如果您有任何想法，请随时与我联系: [m@musiiot.top](mailto:m@musiiot.top)
+
 > 一款强大的工具，可将 Claude Code 请求路由到不同的模型，并自定义任何请求。
 
 ![](blog/images/claude-code.png)
@@ -285,6 +287,7 @@ Transformers 允许您修改请求和响应负载，以确保与不同提供商 
 -   `cleancache`: 清除请求中的 `cache_control` 字段。
 -   `vertex-gemini`: 处理使用 vertex 鉴权的 gemini api。
 -   `qwen-cli` (实验性): 通过 Qwen CLI [qwen-cli.js](https://gist.github.com/musistudio/f5a67841ced39912fd99e42200d5ca8b) 对 qwen3-coder-plus 的非官方支持。
+-   `rovo-cli` (experimental): 通过 Atlassian Rovo Dev CLI [rovo-cli.js](https://gist.github.com/SaseQ/c2a20a38b11276537ec5332d1f7a5e53) 对 GPT-5 的非官方支持。
 
 **自定义 Transformer:**
 
