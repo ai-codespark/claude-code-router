@@ -12,8 +12,8 @@ importers:
         specifier: ^8.2.0
         version: 8.2.0
       '@musistudio/llms':
-        specifier: ^1.0.28
-        version: 1.0.28(ws@8.18.3)
+        specifier: ^1.0.30
+        version: 1.0.30(ws@8.18.3)
       dotenv:
         specifier: ^16.4.7
         version: 16.6.1
@@ -241,11 +241,11 @@ packages:
   '@fastify/static@8.2.0':
     resolution: {integrity: sha512-PejC/DtT7p1yo3p+W7LiUtLMsV8fEvxAK15sozHy9t8kwo5r0uLYmhV/inURmGz1SkHZFz/8CNtHLPyhKcx4SQ==}
 
-  '@google/genai@1.14.0':
-    resolution: {integrity: sha512-jirYprAAJU1svjwSDVCzyVq+FrJpJd5CSxR/g2Ga/gZ0ZYZpcWjMS75KJl9y71K1mDN+tcx6s21CzCbB2R840g==}
+  '@google/genai@1.16.0':
+    resolution: {integrity: sha512-hdTYu39QgDFxv+FB6BK2zi4UIJGWhx2iPc0pHQ0C5Q/RCi+m+4gsryIzTGO+riqWcUA8/WGYp6hpqckdOBNysw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
-      '@modelcontextprotocol/sdk': ^1.11.0
+      '@modelcontextprotocol/sdk': ^1.11.4
     peerDependenciesMeta:
       '@modelcontextprotocol/sdk':
         optional: true
@@ -266,8 +266,8 @@ packages:
     resolution: {integrity: sha512-9I2Zn6+NJLfaGoz9jN3lpwDgAYvfGeNYdbAIjJOqzs4Tpc+VU3Jqq4IofSUBKajiDS8k9fZIg18/z13mpk1bsA==}
     engines: {node: '>=8'}
 
-  '@musistudio/llms@1.0.28':
-    resolution: {integrity: sha512-rHvcJTtrFsRC7ayxz7ZXVoC7lZUwLtAHubdouUj+LYkv35Hr8S6K3lpOMXKYyqcKCtMvxbpjvM9MiwjCaleGEA==}
+  '@musistudio/llms@1.0.30':
+    resolution: {integrity: sha512-vqeAz+noIm0G53DVDnyyAgv90HxObG/URlPjQE89YQafG10xkRUemHyuyscRgiHKvut9Z0FF0i8m0Uiqat068A==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -500,8 +500,8 @@ packages:
     engines: {node: 20 || >=22}
     hasBin: true
 
-  google-auth-library@10.2.1:
-    resolution: {integrity: sha512-HMxFl2NfeHYnaL1HoRIN1XgorKS+6CDaM+z9LSSN+i/nKDDL4KFFEWogMXu7jV4HZQy2MsxpY+wA5XIf3w410A==}
+  google-auth-library@10.3.0:
+    resolution: {integrity: sha512-ylSE3RlCRZfZB56PFJSfUCuiuPq83Fx8hqu1KPWGK8FVdSaxlp/qkeMMX/DT/18xkwXIHvXEXkZsljRwfrdEfQ==}
     engines: {node: '>=18'}
 
   google-auth-library@9.15.1:
@@ -672,8 +672,8 @@ packages:
   once@1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
 
-  openai@5.12.2:
-    resolution: {integrity: sha512-xqzHHQch5Tws5PcKR2xsZGX9xtch+JQFz5zb14dGqlshmmDAFBFEWmeIpf7wVqWV+w7Emj7jRgkNJakyKE0tYQ==}
+  openai@5.16.0:
+    resolution: {integrity: sha512-hoEH8ZNvg1HXjU9mp88L/ZH8O082Z8r6FHCXGiWAzVRrEv443aI57qhch4snu07yQydj+AUAWLenAiBXhu89Tw==}
     hasBin: true
     peerDependencies:
       ws: ^8.18.0
@@ -901,8 +901,8 @@ packages:
   undici-types@7.10.0:
     resolution: {integrity: sha512-t5Fy/nfn+14LuOc2KNYg75vZqClpAiqscVvMygNnlsHBFpSXdJaYtXMcdNLpl/Qvc3P2cB3s6lOV51nqsFq4ag==}
 
-  undici@7.13.0:
-    resolution: {integrity: sha512-l+zSMssRqrzDcb3fjMkjjLGmuiiK2pMIcV++mJaAc9vhjSGpvM7h43QgP+OAMb1GImHmbPyG2tBXeuyG5iY4gA==}
+  undici@7.15.0:
+    resolution: {integrity: sha512-7oZJCPvvMvTd0OlqWsIxTuItTpJBpU1tcbVl24FMn3xt3+VSunwUasmfPJRE57oNO1KsZ4PgA1xTdAX4hq8NyQ==}
     engines: {node: '>=20.18.1'}
 
   uuid@11.1.0:
@@ -1084,7 +1084,7 @@ snapshots:
       fastq: 1.19.1
       glob: 11.0.3
 
-  '@google/genai@1.14.0':
+  '@google/genai@1.16.0':
     dependencies:
       google-auth-library: 9.15.1
       ws: 8.18.3
@@ -1111,18 +1111,18 @@ snapshots:
 
   '@lukeed/ms@2.0.2': {}
 
-  '@musistudio/llms@1.0.28(ws@8.18.3)':
+  '@musistudio/llms@1.0.30(ws@8.18.3)':
     dependencies:
       '@anthropic-ai/sdk': 0.54.0
       '@fastify/cors': 11.1.0
-      '@google/genai': 1.14.0
+      '@google/genai': 1.16.0
       dotenv: 16.6.1
       fastify: 5.5.0
-      google-auth-library: 10.2.1
+      google-auth-library: 10.3.0
       json5: 2.2.3
       jsonrepair: 3.13.0
-      openai: 5.12.2(ws@8.18.3)
-      undici: 7.13.0
+      openai: 5.16.0(ws@8.18.3)
+      undici: 7.15.0
       uuid: 11.1.0
     transitivePeerDependencies:
       - '@modelcontextprotocol/sdk'
@@ -1418,7 +1418,7 @@ snapshots:
       package-json-from-dist: 1.0.1
       path-scurry: 2.0.0
 
-  google-auth-library@10.2.1:
+  google-auth-library@10.3.0:
     dependencies:
       base64-js: 1.5.1
       ecdsa-sig-formatter: 1.0.11
@@ -1586,7 +1586,7 @@ snapshots:
     dependencies:
       wrappy: 1.0.2
 
-  openai@5.12.2(ws@8.18.3):
+  openai@5.16.0(ws@8.18.3):
     optionalDependencies:
       ws: 8.18.3
 
@@ -1770,7 +1770,7 @@ snapshots:
 
   undici-types@7.10.0: {}
 
-  undici@7.13.0: {}
+  undici@7.15.0: {}
 
   uuid@11.1.0: {}
 
